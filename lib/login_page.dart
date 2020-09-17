@@ -12,7 +12,6 @@ void main() {
       )
   );
 }
-const kYellow = const Color(0xFFffd600);
 
 class LoginPage extends StatelessWidget {
   @override
@@ -112,12 +111,12 @@ class LoginPage extends StatelessWidget {
           labelStyle: TextStyle(
               fontWeight: FontWeight.bold,
               letterSpacing: 1.5,
-              color: Colors.grey[500],
+              color: Colors.grey,
               fontSize: 20.0),
           hintText: '$type',
           hintStyle: TextStyle(
             fontWeight: FontWeight.bold,
-            color: Colors.grey,
+            color: Colors.grey[500],
             fontSize: 20.0,
           ),
           border: OutlineInputBorder(
