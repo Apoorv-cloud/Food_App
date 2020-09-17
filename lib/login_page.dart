@@ -1,147 +1,131 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/home_page.dart';
+
+void main() {
+  runApp(
+      MaterialApp(
+          title: 'Food App',
+          debugShowCheckedModeBanner: false,
+          color: Colors.green,
+          home: LoginPage()
+      )
+  );
+}
+const kYellow = const Color(0xFFffd600);
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: Image.asset(
-              'images/foodlogo.png',
-              height: 80,
-              fit: BoxFit.contain,
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Text(
-                'Sign Up Free Account',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 23,
+    return  SafeArea(
+        child: Scaffold(
+            backgroundColor: Colors.white,
+            body: ListView(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 40.0, bottom: 25.0),
+                  child: Center(
+                    child: Image(image:
+                    AssetImage('images/foodlogo.png'),
+                        height: 90,
+                        fit: BoxFit.contain
+                    ),
+                  ),
                 ),
-                textAlign: TextAlign.left,
-              ),
-            ),
-          ),
-          Container(
-            height: 50,
-            width: 600,
-            margin: EdgeInsets.symmetric(horizontal: 30),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              color: Colors.grey[200],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                'UserName',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            height: 50,
-            width: 600,
-            margin: EdgeInsets.symmetric(horizontal: 30),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              color: Colors.grey[200],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                "Email",
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
+                SizedBox(
+                  height: 8.0,
                 ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            height: 50,
-            width: 600,
-            margin: EdgeInsets.symmetric(horizontal: 30),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              color: Colors.grey[200],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                "Password",
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child:Padding(
+                    padding: const EdgeInsets.all(30.0),
+                  child: Text(
+                    'Sign Up Free Account',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),),
+                SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            height: 50,
-            width: 600,
-            margin: EdgeInsets.symmetric(horizontal: 30),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              color: Colors.grey[200],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                "Phone",
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 20, color: Colors.grey, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          SizedBox(
-            width: 400,
-            child: Container(
-              margin: EdgeInsets.all(10),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(60),
+                Column(
+                  children: <Widget>[
+                    fieldInput(
+                        type: 'UserName', texttype: TextInputType.text),
+                    fieldInput(
+                        type: 'Email', texttype: TextInputType.emailAddress),
+                    fieldInput(
+                        type: 'Password',
+                        texttype: TextInputType.visiblePassword),
+                    fieldInput(type: 'Phone', texttype: TextInputType.number)
+                  ],
                 ),
-                color: Colors.blue,
-                textColor: Colors.white,
-                child: Text(
-                  'Sign UP',
-                  style: TextStyle(fontSize: 20),
+                SizedBox(
+                  height: 20.0,
                 ),
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                  );},
-              ),
-            ),
-          )]));
+                Container(
+                  margin: EdgeInsets.fromLTRB(20,20, 20,20),
+
+                  child: RaisedButton(
+                    color: Colors.deepPurpleAccent[700],
+                    padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    child: Text(
+                      'Sign UP',
+                      style: TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) { return HomePage();}
+                        ),
+                      );
+                    },
+                    elevation: 0.0,
+                  ),
+                )
+              ],
+            )));
   }
+
+  Widget fieldInput({String type, TextInputType texttype}) => Container(
+    margin: EdgeInsets.only(left: 20, right: 20, bottom: 17),
+  child: Center(
+      child: TextField(
+        decoration:  InputDecoration(
+          enabledBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(50.0)),
+            borderSide: const BorderSide(color: Colors.grey, width: 0.0),),
+          filled: true,
+          fillColor: Colors.grey[300],
+          contentPadding: new EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+          labelText: '$type',
+          labelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.5,
+              color: Colors.grey[500],
+              fontSize: 20.0),
+          hintText: '$type',
+          hintStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.grey,
+            fontSize: 20.0,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50.0),
+          ),
+        ),
+        keyboardType: texttype,
+      ),
+    ),
+  );
 }
-
-
