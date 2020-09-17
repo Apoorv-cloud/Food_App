@@ -20,7 +20,7 @@ class LoginPage extends StatefulWidget {
   }
 }
 
-class _LoginPageState extends State <LoginPage>{
+class _LoginPageState extends State<LoginPage>{
   var _formkey = GlobalKey<FormState>();
 
   @override
@@ -28,9 +28,9 @@ class _LoginPageState extends State <LoginPage>{
     return  SafeArea(
         child: Scaffold(
             backgroundColor: Colors.white,
-            body:
-             ListView(
+            body: Form(
                key: _formkey,
+             child: ListView(
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.only(top: 40.0, bottom: 25.0),
@@ -105,7 +105,7 @@ class _LoginPageState extends State <LoginPage>{
                   ),
                 )
               ],
-            )));
+            ))));
   }
 
   Widget fieldInput({String type, TextInputType texttype}) => Container(
@@ -113,8 +113,8 @@ class _LoginPageState extends State <LoginPage>{
     child: Center(
       child: TextFormField(
         validator: (String value) {
-           if (value.isEmpty) {
-            return 'Please enter the data';
+          if (value.isEmpty) {
+            return 'Please Enter The Data';
           }
         },
         decoration: InputDecoration(
