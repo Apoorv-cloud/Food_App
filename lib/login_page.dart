@@ -13,13 +13,24 @@ void main() {
   );
 }
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _LoginPageState();
+  }
+}
+
+class _LoginPageState extends State <LoginPage>{
+  var _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
         child: Scaffold(
             backgroundColor: Colors.white,
-            body: ListView(
+            body:
+             ListView(
+               key: _formkey,
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.only(top: 40.0, bottom: 25.0),
@@ -82,13 +93,14 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
+                      if(_formkey.currentState.validate()){
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) { return HomePage();}
                         ),
                       );
-                    },
+                    }},
                     elevation: 0.0,
                   ),
                 )
@@ -98,9 +110,14 @@ class LoginPage extends StatelessWidget {
 
   Widget fieldInput({String type, TextInputType texttype}) => Container(
     margin: EdgeInsets.only(left: 20, right: 20, bottom: 17),
-  child: Center(
-      child: TextField(
-        decoration:  InputDecoration(
+    child: Center(
+      child: TextFormField(
+        validator: (String value) {
+           if (value.isEmpty) {
+            return 'Please enter the data';
+          }
+        },
+        decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(50.0)),
             borderSide: const BorderSide(color: Colors.grey, width: 0.0),),
