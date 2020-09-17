@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -65,9 +66,18 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: MediaQuery.of(context).size.height / 3.5,
+                  height: MediaQuery.of(context).size.height / 3.3,
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.deepPurpleAccent,
+                  decoration: BoxDecoration(
+                      color: Colors.deepPurpleAccent,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(17.0),
+                        bottomRight: Radius.circular(17.0),
+
+                    )
+                  ),
+
+
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -86,27 +96,27 @@ class HomePage extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.only(left: 15.0),
+                              padding: const EdgeInsets.only(left: 13.0),
                               child: Container(
                                 child: barcircle(abc: 'drink', xyz: 'DRINK'),
                               ),
                             ),
                             SizedBox(
-                              width: 28,
+                              width: 25,
                             ),
                             barcircle(abc: 'pizza', xyz: 'PIZZA'),
                             SizedBox(
-                              width: 28,
+                              width: 25,
                             ),
                             barcircle(abc: 'burger', xyz: 'BURGER'),
                             SizedBox(
-                              width: 28,
+                              width: 25,
                             ),
                             barcircle(abc: 'sandwich', xyz: 'SANDWICH'),
                             SizedBox(
-                              width: 28,
+                              width: 25,
                             ),
-                            barcircle(abc: 'icecream', xyz: 'ICE-CREAM')
+                            barcircle(abc: 'icecream', xyz: 'ICE-CREAM'),
                           ],
                         ),
                       ),
